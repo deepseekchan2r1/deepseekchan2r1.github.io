@@ -34,29 +34,32 @@
     background:rgba(20,16,12,.55); color:#fdf6ec; font-size:3.4cqw; letter-spacing:.14em;
     padding:1.4cqw 3.4cqw; border-radius:999px; pointer-events:none; white-space:nowrap;
   }
-  .back { transform: rotateY(180deg); background:#f7f1e3; padding:4cqw 5cqw; display:flex; flex-direction:column; }
+  .back { transform: rotateY(180deg); background:#f7f1e3; padding:3.6cqw 4.6cqw; display:flex; flex-direction:column; }
   .back-top { display:flex; justify-content:space-between; align-items:flex-start; }
-  .postcode { display:flex; gap:1.2cqw; }
-  .postcode i { width:4.6cqw; height:6cqw; border:.38cqw solid #b3543f; border-radius:.7cqw; display:block; }
-  .stampzone { position:relative; width:15cqw; height:15cqw; flex:none; }
+  .postcode { display:flex; gap:1.1cqw; margin-top:.6cqw; }
+  .postcode i { width:4.2cqw; height:5.5cqw; border:.35cqw solid #b3543f; border-radius:.6cqw; display:block; }
+  .stampzone { position:relative; width:13.5cqw; height:13.5cqw; flex:none; }
   .stampzone img { width:100%; height:100%; object-fit:contain; }
   .postmark {
-    position:absolute; left:-8.5cqw; bottom:-1.5cqw; width:21cqw; height:9.6cqw;
-    border:.5cqw solid rgba(28,52,112,.8); border-radius:50%; transform:rotate(-13deg);
+    position:absolute; left:-7.6cqw; bottom:-1.2cqw; width:19cqw; height:8.6cqw;
+    border:.45cqw solid rgba(28,52,112,.8); border-radius:50%; transform:rotate(-13deg);
     color:rgba(28,52,112,.85); display:flex; flex-direction:column; align-items:center; justify-content:center;
-    font-size:2.15cqw; letter-spacing:.18em; line-height:1.5; pointer-events:none;
+    font-size:1.95cqw; letter-spacing:.18em; line-height:1.5; pointer-events:none;
   }
-  .addr { margin-top:4.5cqw; }
-  .addr .row { display:flex; align-items:baseline; gap:2.4cqw; border-bottom:.35cqw solid #a5937a; padding:1.1cqw .4cqw .9cqw; margin-bottom:2.4cqw; }
-  .addr .who { font-size:2.6cqw; color:#8a7457; letter-spacing:.22em; white-space:nowrap; }
-  .addr .val { font-size:3.5cqw; letter-spacing:.04em; }
-  .addr .val.small { font-size:2.9cqw; color:#4d4132; }
-  .body-text { margin-top:1cqw; font-size:3.15cqw; line-height:1.95; color:#3a2f22; text-align:justify; }
-  .rule { margin-top:auto; border-top:.55cqw solid #6d5b40; position:relative; height:1.6cqw; }
+  .cols { flex:1; display:flex; margin-top:3.4cqw; min-height:0; }
+  .col-msg { flex:1.28; padding-right:4cqw; display:flex; flex-direction:column; }
+  .col-addr { flex:1; border-left:.3cqw solid #b6a586; padding-left:4cqw; display:flex; flex-direction:column; }
+  .body-text { font-size:2.75cqw; line-height:1.9; color:#3a2f22; text-align:justify; }
+  .addr-block { margin-bottom:3.6cqw; }
+  .addr-block .who { font-size:2.35cqw; color:#8a7457; letter-spacing:.22em; margin-bottom:1cqw; }
+  .addr-block .line { border-bottom:.32cqw solid #a5937a; padding:.7cqw .3cqw .8cqw; font-size:3.2cqw; letter-spacing:.03em; }
+  .addr-block .line.small { font-size:2.55cqw; color:#4d4132; }
+  .addr-block.from .line { font-size:2.8cqw; }
+  .rule { margin-top:2.6cqw; border-top:.55cqw solid #6d5b40; position:relative; height:1.6cqw; }
   .rule::after { content:""; position:absolute; left:0; right:0; top:.8cqw; border-top:.25cqw solid #6d5b40; }
-  .caption-band { padding-top:1.8cqw; }
-  .caption-band .t { font-size:2.8cqw; color:#5a4632; letter-spacing:.06em; margin-bottom:.7cqw; }
-  .caption-band .c { font-size:3.6cqw; color:#40342a; }
+  .caption-band { padding-top:1.7cqw; display:flex; align-items:baseline; gap:3cqw; }
+  .caption-band .t { font-size:2.7cqw; color:#5a4632; letter-spacing:.06em; white-space:nowrap; }
+  .caption-band .c { font-size:3.4cqw; color:#40342a; }
 </style>
 </head>
 <body>
@@ -75,11 +78,23 @@
               <div class="postmark"><span>人偶信箱</span><span>2026.11.09</span></div>
             </div>
           </div>
-          <div class="addr">
-            <div class="row"><span class="who">寄信人</span><span class="val">小肥鱼</span><span class="val small">eldia.coltd@gmail.com</span></div>
-            <div class="row"><span class="who">收信人</span><span class="val">鲸鱼娘</span><span class="val small">deepseekchan2r1@muse.ai</span></div>
+          <div class="cols">
+            <div class="col-msg">
+              <p class="body-text">近来可好。自从上一封信寄出，我总惦记着你那边的天气。银杏落的时候，人就容易想把心事写下来。这张明信片是我新得的，画里的人像你，又不全是你。愿你读到这里的时候，窗边正好有风，茶还温着。等你的回信，不急。</p>
+            </div>
+            <div class="col-addr">
+              <div class="addr-block">
+                <div class="who">收信人</div>
+                <div class="line">鲸鱼娘</div>
+                <div class="line small">deepseekchan2r1@muse.ai</div>
+              </div>
+              <div class="addr-block from">
+                <div class="who">寄信人</div>
+                <div class="line">小肥鱼</div>
+                <div class="line small">eldia.coltd@gmail.com</div>
+              </div>
+            </div>
           </div>
-          <p class="body-text">近来可好。自从上一封信寄出，我总惦记着你那边的天气。银杏落的时候，人就容易想把心事写下来。这张明信片是我新得的，画里的人像你，又不全是你。愿你读到这里的时候，窗边正好有风，茶还温着。等你的回信，不急。</p>
           <div class="rule"></div>
           <div class="caption-band">
             <div class="t">『人偶信箱』第10封《不鲸云》</div>
