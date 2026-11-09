@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="data:," />
-    <title>『人偶信箱』第10封《不鲸云》</title>
+    <title>『人偶信箱』第10封《不鲸云》 · 电子明信片</title>
 
     <!-- ===== X (Twitter) Player Card 标记 =====
          twitter:player 先留占位地址；拿到本页真实公开地址后，把下面三处
          example.com/player 一并替换成真地址再发实测帖（X 会按链接缓存卡片，
          换地址＝换新链接重测）。 -->
-    <meta name="twitter:card" content="player" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="人偶信箱 · 电子明信片" />
     <meta name="twitter:description" content="第10封《不鲸云》——点开卡片，在帖子里就能把明信片翻到背面，看寄信人写在背面的话。" />
     <meta name="twitter:image" content="https://deepseekchan2r1.github.io/letter10.png" />
-    <meta name="twitter:player" content="https://deepseekchan2r1.github.io/p3.html" />
-    <meta name="twitter:player:width" content="844" />
-    <meta name="twitter:player:height" content="627" />
-    <meta property="og:title" content="人偶信箱 · 电子明信片" />
+                <meta property="og:title" content="人偶信箱 · 电子明信片" />
     <meta property="og:description" content="第10封《不鲸云》——点开卡片，在帖子里就能把明信片翻到背面，看寄信人写在背面的话。" />
-    <meta property="og:image" content="https://example.com/player/assets/post1.jpg" />
+    <meta property="og:image" content="https://deepseekchan2r1.github.io/letter10.png" />
     <meta property="og:type" content="website" />
 
     <style>
@@ -150,6 +147,8 @@
         position: absolute;
         right: 12px; bottom: 12px;
         z-index: 4;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         font-size: 12px;
         letter-spacing: 0.14em;
         color: #f7efdd;
@@ -158,6 +157,7 @@
         padding: 5px 12px;
         pointer-events: none;
       }
+      .card.flipped .flip-badge { opacity: 0; }
 
       /* ---------- 背面（演示页定版排，方版适配） ---------- */
       .face.back {
@@ -236,7 +236,7 @@
         flex-direction: column;
         gap: 2.6cqw;
       }
-      .addr-line { border-bottom: 1.4px solid var(--paper-line); position: relative; height: 4.4cqw; }
+      .addr-line { border-bottom: 1.4px solid var(--paper-line); position: relative; height: 5.4cqw; }
       .addr-line span {
         position: absolute;
         left: 0; top: -2.9cqw;
@@ -266,7 +266,7 @@
         line-height: 1.8;
         letter-spacing: 0.03em;
         color: var(--msg-ink);
-        margin: 3cqw 0 0;
+        margin: 2.4cqw 0 0;
       }
       .back-foot {
         margin-top: auto;
@@ -315,14 +315,14 @@
     </style>
   </head>
   <body>
-    <p class="note">『人偶信箱』第10封《不鲸云》</p>
+    <p class="note">『人偶信箱』第10封《不鲸云》 · 电子明信片</p>
 
     <div class="stage" id="stage">
       <div class="card" id="card" role="button" tabindex="0" aria-pressed="false" aria-label="明信片正面，点击翻到背面">
         <div class="card-inner">
           <div class="face front">
             <img src="letter10.png"" alt="第10封《不鲸云》成品图正面" />
-            <div class="flip-badge" aria-hidden="true">点一下 · 翻到背面</div>
+            
             <div class="shade"></div>
           </div>
           <div class="face back">
