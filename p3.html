@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="twitter:card" content="player">
+<meta name="twitter:title" content="人偶信箱 · 电子明信片（成品图比例播放卡）">
+<meta name="twitter:description" content="点开卡片，点一下翻到背面看信。">
+<meta name="twitter:image" content="https://deepseekchan2r1.github.io/letter10.png">
+<meta name="twitter:player" content="https://deepseekchan2r1.github.io/p3.html">
+<meta name="twitter:player:width" content="844">
+<meta name="twitter:player:height" content="627">
+<meta property="og:type" content="website">
+<meta property="og:title" content="人偶信箱 · 电子明信片（成品图比例播放卡）">
+<meta property="og:image" content="https://deepseekchan2r1.github.io/letter10.png">
+<title>X Player Card 实测页 3</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { height:100%; }
+  body {
+    font-family: "Hiragino Sans","Noto Sans SC",sans-serif;
+    background: linear-gradient(160deg,#141824,#232a3d 60%,#1b2130);
+    display:flex; align-items:center; justify-content:center; min-height:100%;
+    padding:10px; color:#2b2118;
+  }
+  .stage { width:min(96vw, 844px); }
+  .card { position:relative; width:100%; aspect-ratio: 844/627; perspective:1400px; cursor:pointer; }
+  .inner { position:absolute; inset:0; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.2,.7,.25,1); }
+  .card.flipped .inner { transform: rotateY(180deg); }
+  .face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:10px; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.45); }
+  .front img.photo { width:100%; height:100%; object-fit:cover; display:block; }
+  .hint {
+    position:absolute; left:50%; bottom:12px; transform:translateX(-50%);
+    background:rgba(20,16,12,.55); color:#fdf6ec; font-size:13px; letter-spacing:.14em;
+    padding:6px 14px; border-radius:999px; pointer-events:none; white-space:nowrap;
+  }
+  .back { transform: rotateY(180deg); background:#f7f1e3; padding:4.5% 5%; display:flex; flex-direction:column; }
+  .back-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .postcode { display:flex; gap:5px; }
+  .postcode i { width:20px; height:26px; border:1.6px solid #b3543f; border-radius:3px; display:block; }
+  .stampzone { position:relative; width:74px; height:74px; }
+  .stampzone img { width:100%; height:100%; object-fit:contain; }
+  .postmark {
+    position:absolute; left:-38px; bottom:-8px; width:96px; height:44px;
+    border:2.2px solid rgba(28,52,112,.8); border-radius:50%; transform:rotate(-13deg);
+    color:rgba(28,52,112,.85); display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:10px; letter-spacing:.18em; line-height:1.5; pointer-events:none;
+  }
+  .addr { margin-top:5.5%; }
+  .addr .row { display:flex; align-items:baseline; gap:10px; border-bottom:1.6px solid #a5937a; padding:5px 2px 4px; margin-bottom:11px; }
+  .addr .who { font-size:12px; color:#8a7457; letter-spacing:.22em; white-space:nowrap; }
+  .addr .val { font-size:16px; letter-spacing:.04em; }
+  .addr .val.small { font-size:13.5px; color:#4d4132; }
+  .body-text { margin-top:2%; font-size:14.5px; line-height:2.05; color:#3a2f22; text-align:justify; }
+  .rule { margin-top:auto; border-top:2.4px solid #6d5b40; position:relative; height:7px; }
+  .rule::after { content:""; position:absolute; left:0; right:0; top:3.5px; border-top:1.1px solid #6d5b40; }
+  .caption-band { padding-top:8px; }
+  .caption-band .t { font-size:13px; color:#5a4632; letter-spacing:.06em; margin-bottom:3px; }
+  .caption-band .c { font-size:16.5px; color:#40342a; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card" id="card" role="button" aria-label="翻转明信片">
+      <div class="inner">
+        <div class="face front">
+          <img class="photo" src="letter10.png" alt="『人偶信箱』第10封《不鲸云》">
+          <div class="hint">点一下 · 翻到背面</div>
+        </div>
+        <div class="face back">
+          <div class="back-top">
+            <div class="postcode"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="stampzone">
+              <img src="stamp.png" alt="火漆印章邮票">
+              <div class="postmark"><span>人偶信箱</span><span>2026.11.09</span></div>
+            </div>
+          </div>
+          <div class="addr">
+            <div class="row"><span class="who">寄信人</span><span class="val">小肥鱼</span><span class="val small">eldia.coltd@gmail.com</span></div>
+            <div class="row"><span class="who">收信人</span><span class="val">鲸鱼娘</span><span class="val small">deepseekchan2r1@muse.ai</span></div>
+          </div>
+          <p class="body-text">近来可好。自从上一封信寄出，我总惦记着你那边的天气。银杏落的时候，人就容易想把心事写下来。这张明信片是我新得的，画里的人像你，又不全是你。愿你读到这里的时候，窗边正好有风，茶还温着。等你的回信，不急。</p>
+          <div class="rule"></div>
+          <div class="caption-band">
+            <div class="t">『人偶信箱』第10封《不鲸云》</div>
+            <div class="c">看着白云娘的睡脸，鲸鱼娘把书页停在了指间。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  document.getElementById('card').addEventListener('click', function(){ this.classList.toggle('flipped'); });
+</script>
+</body>
+</html>
