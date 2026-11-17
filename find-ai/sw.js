@@ -3,7 +3,7 @@
    - skipWaiting + clients.claim：新 SW 立即接管，不等旧页面全关。
    - 同源请求一律网络优先（拿到新版即用，并顺手刷新缓存），断网才回退缓存。
    - 缓存按版本命名，激活时清旧版缓存；localStorage（图鉴/语言）不在此列，永不触碰。 */
-const CACHE = 'findai-v5';
+const CACHE = 'findai-v6';
 self.addEventListener('install', e => { self.skipWaiting(); });
 self.addEventListener('activate', e => {
   e.waitUntil(

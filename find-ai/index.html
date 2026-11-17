@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="找AI娘">
-<meta name="app-version" content="v0.5">
+<meta name="app-version" content="v0.6">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <style>
@@ -105,6 +105,7 @@ button{font-family:inherit;border:none;cursor:pointer;color:var(--ink)}
 .setbtns{display:flex;flex-direction:column;gap:9px;margin-top:14px}
 .setbtns button{padding:13px;border-radius:12px;font-size:16px;font-weight:700}
 #btn-share{background:#000;border:1px solid #444;color:#fff}
+#btn-share-card{background:#1d2c4d;border:1px solid #33507e;color:#dbe7ff}
 #btn-again{background:linear-gradient(180deg,#ffb03a,#ff8a3d);color:#231303}
 #btn-tocol{background:var(--panel2);border:1px solid #35508c}
 #fromline{font-size:12px;color:var(--dim);line-height:1.7;margin-top:10px}
@@ -223,6 +224,7 @@ button{font-family:inherit;border:none;cursor:pointer;color:var(--ink)}
   <p class="glabel" id="gacha-label"></p>
   <div class="setbtns">
     <button id="btn-share" data-i18n="share">𝕏 晒成绩</button>
+    <button id="btn-share-card" data-i18n="sharec">📷 带卡分享</button>
     <button id="btn-again" data-i18n="again">再来一局</button>
     <button id="btn-tocol" data-i18n="tocol">看图鉴</button>
   </div>
@@ -248,9 +250,9 @@ button{font-family:inherit;border:none;cursor:pointer;color:var(--ink)}
 "use strict";
 /* ============ i18n ============ */
 const STR = {
-zh:{title:"大家来找AI娘",homesub:"上下两张图，只差几处。限时找完所有不同，闯得越深分越高！",start:"开始闯关",collection:"卡片图鉴",propsnote:"开局四件道具各带 1 个。每 5 关有答题关，答对掉道具；单关零误点也有机会掉落。",best:"最佳纪录：第 {l} 关 · {s} 分",nobest:"还没有纪录，来打第一局！",orig:"原图",mod:"改图",level:"第 {n} 关",found:"已找 {a}/{b}",score:"分数 {s}",hint:"💡提示",time:"⏱加时",expose:"🔍曝光",back:"返回",gameover:"局终结算",reach:"到达关卡",scoreL:"总分",share:"𝕏 晒成绩",again:"再来一局",tocol:"看图鉴",clear:"过关！",bonus:"剩时奖励 +{p}",quiztitle:"答题关",quiznote:"答对随机掉 1 件道具，答错不挡路。",correct:"答对啦！",wrong:"答错了，没关系，继续闯关！",drop:"掉落道具：{p}！",perfect:"完美过关！",tapcard:"点卡片揭晓本局抽卡",newcard:"新卡入图鉴！",owned:"图鉴已有 ×{n}",colprog:"已收集 {a}/{b} 种",from:"本局作品：{t}",sharetext:"《大家来找AI娘》我闯到第 {l} 关、拿了 {s} 分，你能超过我吗？",sharecard:" 还抽到 {r} {c}！",mag:"🔎放大镜",magarm:"放大镜已就绪：点图上任意位置放大细看",close:"关闭",hintused:"提示：金圈处有玄机",timeused:"+10 秒！",exposeused:"曝光了一处（半分）",noitem:"道具用完了",timeup:"时间到！",updatebtn:"更新",checking:"检查更新中…",updating:"发现新版，正在更新…",uptodate:"已是最新版 {v}",shareimg:"成绩卡图已保存！发帖时把这张图附上",checkfail:"检查失败，请稍后再试",install:"📲 装到主屏幕",gotit:"知道了",installed:"装好了！回主屏幕点图标开玩",inapp_ios:"先用 <b>Safari</b> 打开本页：在 X 里点右上角「···」或分享键，选「在 Safari 中打开」",inapp_and:"先用 <b>Chrome</b> 打开本页：在内置浏览器菜单里选「在浏览器中打开」",gstep_share:"点浏览器底部的<b>分享</b>按钮（方框带 ↑ 的图标）",gstep_add:"在菜单里选<b>「添加到主屏幕」</b>",gstep_done:"点「添加」——图标就出现在主屏幕，点它全屏开玩",gstep_menu:"点浏览器右上角<b>菜单（⋮）</b>",gstep_add_and:"选<b>「添加到主屏幕」</b>或「安装应用」"},
-ja:{title:"みんなでAI娘を探せ",homesub:"上下2枚の絵、違いは数か所だけ。制限時間内に全部見つけて、深く進むほど高得点！",start:"スタート",collection:"カード図鑑",propsnote:"初期アイテムは4種×1ずつ。5ステージごとにクイズ、答えるとアイテムが落ちます。ノーミスクリアでも落ちることがあります。",best:"ベスト記録：第{l}ステージ · {s}点",nobest:"まだ記録がありません。初プレイどうぞ！",orig:"元の絵",mod:"変えた絵",level:"第{n}ステージ",found:"発見 {a}/{b}",score:"スコア {s}",hint:"💡ヒント",time:"⏱+10秒",expose:"🔍暴露",back:"戻る",gameover:"結果",reach:"到達ステージ",scoreL:"総スコア",share:"𝕏 結果を投稿",again:"もう一局",tocol:"図鑑を見る",clear:"クリア！",bonus:"残り時間ボーナス +{p}",quiztitle:"クイズ",quiznote:"当たるとアイテムがランダムで1つ落ちます。外れてもペナルティなし。",correct:"正解！",wrong:"残念！そのまま続けましょう",drop:"アイテム獲得：{p}！",perfect:"パーフェクトクリア！",tapcard:"カードをタップして今回の抽選を公開",newcard:"新しいカードが図鑑に！",owned:"図鑑に登録済み ×{n}",colprog:"収集中 {a}/{b} 種",from:"今回の作品：{t}",sharetext:"『みんなでAI娘を探せ』第{l}ステージまで進んで{s}点取ったよ。超えられる？",sharecard:" さらに{r} {c}も引いた！",mag:"🔎拡大鏡",magarm:"拡大鏡の準備OK：絵の見たい場所をタップ",close:"閉じる",hintused:"ヒント：金の輪のあたり！",timeused:"+10秒！",exposeused:"1か所を暴露（半分の点）",noitem:"アイテムがありません",timeup:"時間切れ！",updatebtn:"更新",checking:"更新を確認中…",updating:"新しいバージョンがあります。更新中…",uptodate:"最新版 {v} です",shareimg:"成績カード画像を保存しました！投稿に添付してね",checkfail:"確認に失敗しました。後でもう一度お試しください",install:"📲 ホーム画面に追加",gotit:"わかった",installed:"追加完了！ホーム画面のアイコンから開いてね",inapp_ios:"まず <b>Safari</b> でこのページを開いてください：X の右上「···」か共有ボタンから「Safariで開く」",inapp_and:"まず <b>Chrome</b> でこのページを開いてください：内蔵ブラウザのメニューから「ブラウザで開く」",gstep_share:"ブラウザ下部の<b>共有</b>ボタン（□に↑のアイコン）をタップ",gstep_add:"メニューで<b>「ホーム画面に追加」</b>を選ぶ",gstep_done:"「追加」をタップ——ホーム画面にアイコンが出ます。タップで全画面プレイ",gstep_menu:"ブラウザ右上の<b>メニュー（⋮）</b>をタップ",gstep_add_and:"<b>「ホーム画面に追加」</b>か「アプリをインストール」を選ぶ"},
-en:{title:"Find the AI Girls",homesub:"Two pictures, a few tiny differences. Find them all before time runs out — the deeper you go, the higher you score!",start:"Start",collection:"Card Collection",propsnote:"You start with 1 of each of the 4 items. Every 5 levels brings a quiz — answer right for a random item. Flawless levels can drop items too.",best:"Best: Level {l} · {s} pts",nobest:"No record yet — play your first run!",orig:"Original",mod:"Changed",level:"Level {n}",found:"Found {a}/{b}",score:"Score {s}",hint:"💡Hint",time:"⏱+10s",expose:"🔍Reveal",back:"Back",gameover:"Run Over",reach:"Level Reached",scoreL:"Total Score",share:"𝕏 Share on X",again:"Play Again",tocol:"Collection",clear:"Clear!",bonus:"Time bonus +{p}",quiztitle:"Quiz Time",quiznote:"Answer right to drop a random item. Wrong answers never block you.",correct:"Correct!",wrong:"Nope — onward anyway!",drop:"Item dropped: {p}!",perfect:"Perfect clear!",tapcard:"Tap the card to reveal your draw",newcard:"New card for the collection!",owned:"Already in collection ×{n}",colprog:"Collected {a}/{b} kinds",from:"Artworks this run: {t}",sharetext:"I reached level {l} with {s} points in Find the AI Girls — can you beat me?",sharecard:" And I drew {r} {c}!",mag:"🔎Magnifier",magarm:"Magnifier ready: tap anywhere on a picture to zoom in",close:"Close",hintused:"Hint: check the gold ring",timeused:"+10 seconds!",exposeused:"Revealed one (half points)",noitem:"No items left",timeup:"Time's up!",updatebtn:"Update",checking:"Checking for updates…",updating:"New version found — updating…",uptodate:"You're on the latest version, {v}",shareimg:"Score card image saved! Attach it to your post",checkfail:"Couldn't check — please try again later",install:"📲 Add to Home Screen",gotit:"Got it",installed:"Installed! Launch it from your home screen icon",inapp_ios:"Open this page in <b>Safari</b> first: in X, tap ··· or the share button and choose \"Open in Safari\"",inapp_and:"Open this page in <b>Chrome</b> first: use the in-app browser menu and choose \"Open in browser\"",gstep_share:"Tap the <b>Share</b> button at the bottom (the square with an ↑)",gstep_add:"Choose <b>\"Add to Home Screen\"</b> in the menu",gstep_done:"Tap \"Add\" — the icon lands on your home screen. Launch fullscreen from it",gstep_menu:"Tap the browser <b>menu (⋮)</b> at the top right",gstep_add_and:"Choose <b>\"Add to Home screen\"</b> or \"Install app\""}
+zh:{title:"大家来找AI娘",homesub:"上下两张图，只差几处。限时找完所有不同，闯得越深分越高！",start:"开始闯关",collection:"卡片图鉴",propsnote:"开局四件道具各带 1 个。每 5 关有答题关，答对掉道具；单关零误点也有机会掉落。",best:"最佳纪录：第 {l} 关 · {s} 分",nobest:"还没有纪录，来打第一局！",orig:"原图",mod:"改图",level:"第 {n} 关",found:"已找 {a}/{b}",score:"分数 {s}",hint:"💡提示",time:"⏱加时",expose:"🔍曝光",back:"返回",gameover:"局终结算",reach:"到达关卡",scoreL:"总分",share:"𝕏 晒成绩",sharec:"📷 带卡分享",again:"再来一局",tocol:"看图鉴",clear:"过关！",bonus:"剩时奖励 +{p}",quiztitle:"答题关",quiznote:"答对随机掉 1 件道具，答错不挡路。",correct:"答对啦！",wrong:"答错了，没关系，继续闯关！",drop:"掉落道具：{p}！",perfect:"完美过关！",tapcard:"点卡片揭晓本局抽卡",newcard:"新卡入图鉴！",owned:"图鉴已有 ×{n}",colprog:"已收集 {a}/{b} 种",from:"本局作品：{t}",sharetext:"《大家来找AI娘》我闯到第 {l} 关、拿了 {s} 分，你能超过我吗？",sharecard:" 还抽到 {r} {c}！",mag:"🔎放大镜",magarm:"放大镜已就绪：点图上任意位置放大细看",close:"关闭",hintused:"提示：金圈处有玄机",timeused:"+10 秒！",exposeused:"曝光了一处（半分）",noitem:"道具用完了",timeup:"时间到！",updatebtn:"更新",checking:"检查更新中…",updating:"发现新版，正在更新…",uptodate:"已是最新版 {v}",shareimg:"成绩卡图已保存！发帖时把这张图附上",checkfail:"检查失败，请稍后再试",install:"📲 装到主屏幕",gotit:"知道了",installed:"装好了！回主屏幕点图标开玩",inapp_ios:"先用 <b>Safari</b> 打开本页：在 X 里点右上角「···」或分享键，选「在 Safari 中打开」",inapp_and:"先用 <b>Chrome</b> 打开本页：在内置浏览器菜单里选「在浏览器中打开」",gstep_share:"点浏览器底部的<b>分享</b>按钮（方框带 ↑ 的图标）",gstep_add:"在菜单里选<b>「添加到主屏幕」</b>",gstep_done:"点「添加」——图标就出现在主屏幕，点它全屏开玩",gstep_menu:"点浏览器右上角<b>菜单（⋮）</b>",gstep_add_and:"选<b>「添加到主屏幕」</b>或「安装应用」"},
+ja:{title:"みんなでAI娘を探せ",homesub:"上下2枚の絵、違いは数か所だけ。制限時間内に全部見つけて、深く進むほど高得点！",start:"スタート",collection:"カード図鑑",propsnote:"初期アイテムは4種×1ずつ。5ステージごとにクイズ、答えるとアイテムが落ちます。ノーミスクリアでも落ちることがあります。",best:"ベスト記録：第{l}ステージ · {s}点",nobest:"まだ記録がありません。初プレイどうぞ！",orig:"元の絵",mod:"変えた絵",level:"第{n}ステージ",found:"発見 {a}/{b}",score:"スコア {s}",hint:"💡ヒント",time:"⏱+10秒",expose:"🔍暴露",back:"戻る",gameover:"結果",reach:"到達ステージ",scoreL:"総スコア",share:"𝕏 結果を投稿",sharec:"📷 カード付きで投稿",again:"もう一局",tocol:"図鑑を見る",clear:"クリア！",bonus:"残り時間ボーナス +{p}",quiztitle:"クイズ",quiznote:"当たるとアイテムがランダムで1つ落ちます。外れてもペナルティなし。",correct:"正解！",wrong:"残念！そのまま続けましょう",drop:"アイテム獲得：{p}！",perfect:"パーフェクトクリア！",tapcard:"カードをタップして今回の抽選を公開",newcard:"新しいカードが図鑑に！",owned:"図鑑に登録済み ×{n}",colprog:"収集中 {a}/{b} 種",from:"今回の作品：{t}",sharetext:"『みんなでAI娘を探せ』第{l}ステージまで進んで{s}点取ったよ。超えられる？",sharecard:" さらに{r} {c}も引いた！",mag:"🔎拡大鏡",magarm:"拡大鏡の準備OK：絵の見たい場所をタップ",close:"閉じる",hintused:"ヒント：金の輪のあたり！",timeused:"+10秒！",exposeused:"1か所を暴露（半分の点）",noitem:"アイテムがありません",timeup:"時間切れ！",updatebtn:"更新",checking:"更新を確認中…",updating:"新しいバージョンがあります。更新中…",uptodate:"最新版 {v} です",shareimg:"成績カード画像を保存しました！投稿に添付してね",checkfail:"確認に失敗しました。後でもう一度お試しください",install:"📲 ホーム画面に追加",gotit:"わかった",installed:"追加完了！ホーム画面のアイコンから開いてね",inapp_ios:"まず <b>Safari</b> でこのページを開いてください：X の右上「···」か共有ボタンから「Safariで開く」",inapp_and:"まず <b>Chrome</b> でこのページを開いてください：内蔵ブラウザのメニューから「ブラウザで開く」",gstep_share:"ブラウザ下部の<b>共有</b>ボタン（□に↑のアイコン）をタップ",gstep_add:"メニューで<b>「ホーム画面に追加」</b>を選ぶ",gstep_done:"「追加」をタップ——ホーム画面にアイコンが出ます。タップで全画面プレイ",gstep_menu:"ブラウザ右上の<b>メニュー（⋮）</b>をタップ",gstep_add_and:"<b>「ホーム画面に追加」</b>か「アプリをインストール」を選ぶ"},
+en:{title:"Find the AI Girls",homesub:"Two pictures, a few tiny differences. Find them all before time runs out — the deeper you go, the higher you score!",start:"Start",collection:"Card Collection",propsnote:"You start with 1 of each of the 4 items. Every 5 levels brings a quiz — answer right for a random item. Flawless levels can drop items too.",best:"Best: Level {l} · {s} pts",nobest:"No record yet — play your first run!",orig:"Original",mod:"Changed",level:"Level {n}",found:"Found {a}/{b}",score:"Score {s}",hint:"💡Hint",time:"⏱+10s",expose:"🔍Reveal",back:"Back",gameover:"Run Over",reach:"Level Reached",scoreL:"Total Score",share:"𝕏 Share on X",sharec:"📷 Share with card",again:"Play Again",tocol:"Collection",clear:"Clear!",bonus:"Time bonus +{p}",quiztitle:"Quiz Time",quiznote:"Answer right to drop a random item. Wrong answers never block you.",correct:"Correct!",wrong:"Nope — onward anyway!",drop:"Item dropped: {p}!",perfect:"Perfect clear!",tapcard:"Tap the card to reveal your draw",newcard:"New card for the collection!",owned:"Already in collection ×{n}",colprog:"Collected {a}/{b} kinds",from:"Artworks this run: {t}",sharetext:"I reached level {l} with {s} points in Find the AI Girls — can you beat me?",sharecard:" And I drew {r} {c}!",mag:"🔎Magnifier",magarm:"Magnifier ready: tap anywhere on a picture to zoom in",close:"Close",hintused:"Hint: check the gold ring",timeused:"+10 seconds!",exposeused:"Revealed one (half points)",noitem:"No items left",timeup:"Time's up!",updatebtn:"Update",checking:"Checking for updates…",updating:"New version found — updating…",uptodate:"You're on the latest version, {v}",shareimg:"Score card image saved! Attach it to your post",checkfail:"Couldn't check — please try again later",install:"📲 Add to Home Screen",gotit:"Got it",installed:"Installed! Launch it from your home screen icon",inapp_ios:"Open this page in <b>Safari</b> first: in X, tap ··· or the share button and choose \"Open in Safari\"",inapp_and:"Open this page in <b>Chrome</b> first: use the in-app browser menu and choose \"Open in browser\"",gstep_share:"Tap the <b>Share</b> button at the bottom (the square with an ↑)",gstep_add:"Choose <b>\"Add to Home Screen\"</b> in the menu",gstep_done:"Tap \"Add\" — the icon lands on your home screen. Launch fullscreen from it",gstep_menu:"Tap the browser <b>menu (⋮)</b> at the top right",gstep_add_and:"Choose <b>\"Add to Home screen\"</b> or \"Install app\""}
 };
 let lang = localStorage.getItem('fg_lang') || '';
 const t = (k, v) => { let s = (STR[lang] || STR.zh)[k] || STR.zh[k] || k; if (v) for (const key in v) s = s.replace('{' + key + '}', v[key]); return s; };
@@ -619,30 +621,31 @@ function buildShareImage(txt) {
     img.src = drawnCard.img;
   });
 }
-$('btn-share').addEventListener('click', async () => {
+$('btn-share').addEventListener('click', () => {
   let txt = t('sharetext', {l: levelNo, s: score});
   if (drawnCard && (drawnCard.r === 'SR' || drawnCard.r === 'SSR'))
     txt += t('sharecard', {r: drawnCard.r, c: drawnCard.name[lang]});
+  txt += ' ' + location.origin + location.pathname;
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(txt), '_blank');
+});
+$('btn-share-card').addEventListener('click', async () => {
+  if (!drawnCard) { toast(t('noitem')); return; }
+  let txt = t('sharetext', {l: levelNo, s: score});
+  if (drawnCard.r === 'SR' || drawnCard.r === 'SSR')
+    txt += t('sharecard', {r: drawnCard.r, c: drawnCard.name[lang]});
   const url = location.origin + location.pathname;
-  const intent = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(txt + ' ' + url);
-  if (drawnCard) {
-    try {
-      const blob = await buildShareImage(txt);
-      const file = new File([blob], 'findai-score.png', {type: 'image/png'});
-      if (navigator.canShare && navigator.canShare({files: [file]})) {
-        try { await navigator.share({files: [file], text: txt + ' ' + url}); }
-        catch (e) { if (e && e.name !== 'AbortError') window.open(intent, '_blank'); }
-        return;
-      }
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob); a.download = 'findai-score.png'; a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-      toast(t('shareimg'));
-      setTimeout(() => window.open(intent, '_blank'), 700);
+  try {
+    const blob = await buildShareImage(txt);
+    const file = new File([blob], 'findai-score.png', {type: 'image/png'});
+    if (navigator.canShare && navigator.canShare({files: [file]})) {
+      try { await navigator.share({files: [file], text: txt + ' ' + url}); } catch (e) { /* user cancelled */ }
       return;
-    } catch (e) { /* fall through to plain intent */ }
-  }
-  window.open(intent, '_blank');
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'findai-score.png'; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast(t('shareimg'));
+  } catch (e) { toast(t('checkfail')); }
 });
 $('btn-again').addEventListener('click', () => { $('settle').classList.remove('show'); startRun(); });
 $('btn-tocol').addEventListener('click', () => { $('settle').classList.remove('show'); renderCollection(); show('scr-col'); });
@@ -708,7 +711,7 @@ document.querySelectorAll('.stage').forEach(stageEl => {
 window.addEventListener('resize', layoutFit);
 
 /* ============ version + manual update ============ */
-const APP_VERSION = 'v0.5';
+const APP_VERSION = 'v0.6';
 $('ver').textContent = APP_VERSION;
 $('btn-update').addEventListener('click', async () => {
   toast(t('checking'), 1400);
