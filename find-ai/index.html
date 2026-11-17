@@ -342,9 +342,9 @@ $('install-close').addEventListener('click', () => $('installov').classList.remo
 /* ============ levels ============ */
 function levelFor(n){
   if (n <= LEVELS.length) return LEVELS[n - 1];
-  const pool = [4, 5, 6, 7];
+  const pool = [5, 6, 7, 8];
   const lv = LEVELS[pool[(n - LEVELS.length - 1) % pool.length]];
-  return Object.assign({}, lv, {time: Math.max(20, 46 - 2 * (n - LEVELS.length))});
+  return Object.assign({}, lv, {time: Math.max(25, 74 - 2 * (n - LEVELS.length))});
 }
 function layoutFit(){
   if (!curLevel) return;
