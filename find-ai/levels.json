@@ -5,31 +5,31 @@
    "a": "img/L1a.jpg",
    "b": "img/L1b.jpg",
    "w": 900,
-   "h": 600,
+   "h": 1350,
    "time": 90,
    "diffs": [
     [
-     0.165,
-     0.146
+     0.904,
+     0.054
     ],
     [
-     0.322,
-     0.146
+     0.062,
+     0.45
     ],
     [
-     0.848,
-     0.359
+     0.65,
+     0.68
     ]
    ],
    "title": {
-    "zh": "姐姐的房间",
-    "ja": "お姉さんの部屋",
-    "en": "Sister's Room"
+    "zh": "深紫礼服·镜旁",
+    "ja": "深紫ドレス・鏡のそば",
+    "en": "Deep Violet Dress, by the Mirror"
    },
    "char": {
-    "zh": "龙娘",
-    "ja": "GPTちゃん",
-    "en": "GPT-chan"
+    "zh": "文心娘",
+    "ja": "Ernieちゃん",
+    "en": "Ernie-chan"
    },
    "series": {
     "zh": "美少娘万华镜",
