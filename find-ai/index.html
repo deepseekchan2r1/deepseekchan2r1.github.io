@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="找AI娘">
-<meta name="app-version" content="v0.3">
+<meta name="app-version" content="v0.4">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <style>
@@ -349,14 +349,14 @@ function levelFor(n){
   if (n <= LEVELS.length) return LEVELS[n - 1];
   const pool = [5, 6, 7, 8];
   const lv = LEVELS[pool[(n - LEVELS.length - 1) % pool.length]];
-  return Object.assign({}, lv, {time: Math.max(25, 74 - 2 * (n - LEVELS.length))});
+  return Object.assign({}, lv, {time: Math.max(25, 59 - 2 * (n - LEVELS.length))});
 }
 function layoutFit(){
   if (!curLevel) return;
   document.querySelectorAll('.stage').forEach(st => {
     const fit = st.querySelector('.fit');
     const W = st.clientWidth, H = st.clientHeight;
-    const sc = Math.min(W / curLevel.w, H / curLevel.h);
+    const sc = Math.max(W / curLevel.w, H / curLevel.h);
     const fw = curLevel.w * sc, fh = curLevel.h * sc;
     fit.style.width = fw + 'px'; fit.style.height = fh + 'px';
     fit.style.left = (W - fw) / 2 + 'px'; fit.style.top = (H - fh) / 2 + 'px';
@@ -653,7 +653,7 @@ document.querySelectorAll('.stage').forEach(stageEl => {
 window.addEventListener('resize', layoutFit);
 
 /* ============ version + manual update ============ */
-const APP_VERSION = 'v0.3';
+const APP_VERSION = 'v0.4';
 $('ver').textContent = APP_VERSION;
 $('btn-update').addEventListener('click', async () => {
   toast(t('checking'), 1400);
